@@ -22,8 +22,8 @@ $rec  = new Record();
 $rows = $rec->query("SELECT * FROM cart WHERE user_id = 123");
 print_r($rows);     // array of arrays
 
-$ok = $rec->update("UPDATE cart SET updated = NOW() WHERE id = 456");
-print_r($ok);       // number of affected rows
+$num = $rec->update("UPDATE cart SET updated = NOW() WHERE id = 456");
+print_r($num);      // number of affected rows
 ```
 
 The config can also be parsed from a URL string:
