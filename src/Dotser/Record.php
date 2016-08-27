@@ -45,7 +45,7 @@ class Record implements RecordInterface
 
         $res = $this->mysql->query($sql);
         if ($res === false) {
-            throw \RuntimeException(sprintf(
+            throw new \RuntimeException(sprintf(
                 "%s from query <%s>.",
                 $this->mysql->error,
                 $sql
