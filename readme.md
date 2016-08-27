@@ -43,7 +43,7 @@ interface RecordInterface
 }
 ```
 
-The config can be parsed from a URL string and changed at will:
+The config can be parsed from a URL and changed at will:
 
 ```php
 Record::fromUrl("mysql://username:password@localhost/test");
