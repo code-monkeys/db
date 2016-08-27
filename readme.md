@@ -35,15 +35,15 @@ The config can also be parsed from a URL string:
 use Dotser\Record;
 
 Record::fromUrl("mysql://username:password@localhost/test");
-$user   = Record::config("user");           // get one item back
-$config = Record::config();                 // get all current config back
-Record::config("host", "db02.internal");    // change one item
+$user   = Record::config("user");                       // get one item back
+$config = Record::config();                             // get all current config back
+$old    = Record::config("host", "db02.internal");      // change one item, returns old value
 ```
 
 ### API
 
 ```php
-class RecordInterface
+interface RecordInterface
 {
 
     public static function config($name = null, $value = null);
