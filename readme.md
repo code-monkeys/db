@@ -42,3 +42,18 @@ $rec  = new Record();
 $rows = $rec->query("SELECT * FROM cart WHERE user_id = 123");
 print_r($rows); // array of rows
 ```
+
+### API
+
+```php
+class RecordInterface
+{
+
+    public static function config($name = null, $value = null, $default = null);
+    public static function fromUrl(string $url): void;
+
+    public function read(string $sql): array;
+    public function write(string $sql): int;
+
+}
+```

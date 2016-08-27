@@ -2,17 +2,17 @@
 namespace Dotser;
 
 
-class Record
+class Record implements RecordInterface
 {
 
-    public static $config = [
+    protected static $config = [
         "host" => "localhost",
         "user" => "root",
         "pass" => "root",
         "db"   => "test",
     ];
 
-    protected $db = null;
+    protected $mysql = null;
 
     public static function config($name = null, $value = null, $default = null)
     {
@@ -39,63 +39,50 @@ class Record
         self::config($config);
     }
 
-    protected function connect()
-    {
-        if ($this->db) {
-            return;
-        }
-
-        $this->db = new \mysqli(
-            self::$config["host"],
-            self::$config["user"],
-            self::$config["pass"]
-        );
-        $this->db->select_db(self::$config["db"]);
-    }
-
-    public function exec($sql)
+    protected function exec($sql)
     {
         $this->connect();
 
-        $res = $this->db->query($sql);
+        $res = $this->mysql->query($sql);
         if ($res === false) {
-            throw \RuntimeException($this->db->error . ': ' . $sql);
+            throw \RuntimeException(sprintf(
+                "%s from query <%s>.",
+                $this->mysql->error,
+                $sql
+            ));
         }
 
         return $res;
     }
 
-    public function query($sql, $key = null)
+    public function read($sql)
     {
         $rows = [];
         $res  = $this->exec($sql);
         while ($row = $res->fetch_assoc()) {
-            if ($key) {
-                $rows[$row[$key]] = $row;
-            } else {
-                $rows[] = $row;
-            }
+            $rows[] = $row;
         }
         return $rows;
     }
 
-    public function map($sql)
+    public function write($sql)
     {
-        $map = [];
-        $res = $this->exec($sql);
-        while ($row = $res->fetch_assoc()) {
-            $key = array_shift($row);
-            $val = array_shift($row);
-            $map[$key] = $val;
-        }
-        return $map;
+        $this->exec($sql);
+        return $this->affected_rows;
     }
 
-    public function fetch($sql)
+    protected function connect()
     {
-        $rows = $this->query($sql);
-        $row  = array_shift($rows);
-        return $row;
+        if ($this->mysql) {
+            return;
+        }
+
+        $this->mysql = new \mysqli(
+            self::$config["host"],
+            self::$config["user"],
+            self::$config["pass"]
+        );
+        $this->mysql->select_db(self::$config["db"]);
     }
 
 }
