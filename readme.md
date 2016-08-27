@@ -46,12 +46,12 @@ interface RecordInterface
 The config can be parsed from a URL and changed at will:
 
 ```php
-$rec = Record::fromUrl("mysql://username:password@localhost/test");
-$rec = Record::fromUrl($_ENV["DATABASE_URL"]);
+$rec  = Record::fromUrl("mysql://username:password@localhost/test");
+$rec  = Record::fromUrl($_ENV["DATABASE_URL"]);
 
-$user   = $rec->config("user");                   // get one item back
-$config = $rec->config();                         // get all current config back
-$old    = $rec->config("host", "db02.internal");  // change one item, returns old value
+$user = $rec->config("user");                   // get one item back
+$all  = $rec->config();                         // get all current config back
+$old  = $rec->config("host", "db02.internal");  // change one item, returns old value
 ```
 
 
