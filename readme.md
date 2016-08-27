@@ -6,7 +6,6 @@ A small mysql library.
 
 ### Installation
 
-Install via composer:
 ```
 compose require m/record
 ```
