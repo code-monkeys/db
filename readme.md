@@ -17,13 +17,16 @@ Record::config([
     "db"   => "shop",
 ]);
 
-// Use mysql object
-$rec  = new Record();
-$rows = $rec->read("SELECT * FROM cart WHERE user_id = 123");
-print_r($rows);     // array of arrays
+// Crreate an object
+$rec = new Record();
 
+// Reads data, returns array of associative arrays
+$res = $rec->read("SELECT * FROM cart WHERE user_id = 123");
+print_r($res);
+
+// Writes stuff, returns number of affected rows
 $num = $rec->write("UPDATE cart SET updated = NOW() WHERE id = 456");
-print_r($num);      // number of affected rows
+print_r($num);
 ```
 
 The config can also be parsed from a URL string:
