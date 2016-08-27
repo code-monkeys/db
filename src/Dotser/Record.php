@@ -21,12 +21,11 @@ class Record
         }
 
         if (is_array($name)) {
-            self::$config += $name;
+            self::$config = array_merge(self::$config, $name);
             return;
         }
 
         if ($value === null) {
-            echo '<pre>'; var_dump($name); echo '</pre>' . PHP_EOL;
             return array_key_exists($name, self::$config) ? self::$config[$name] : $default;
         }
 
@@ -37,8 +36,7 @@ class Record
     {
         $config = parse_url($url);
         $config["db"] = trim($config["path"], "/");
-
-        self::configure($config);
+        self::config($config);
     }
 
     protected function connect()

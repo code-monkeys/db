@@ -17,12 +17,44 @@ class RecordTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf("Dotser\Record", $this->object);
     }
 
+    public function testConfigGetArray()
+    {
+        $return = Record::config();
+        $this->assertTrue(is_array($return));
+        $this->assertTrue(isset($return["user"]));
+    }
+
+    public function testConfigGetOneValue()
+    {
+        $return = Record::config("user");
+        $this->assertNotNull($return);
+    }
+
     public function testConfigMergeArray()
     {
-        $config = ["user" => __FILE__];
-        Record::config($config);
-        $this->assert(__FILE__, Record::config("user"));
-        exit('<pre>' . print_r(Record::config(), true) . '</pre>' . PHP_EOL);
+        $name  = "user";
+        $value = __FILE__;
+        Record::config([$name => $value]);
+        $this->assertEquals($value, Record::config($name));
+    }
+
+    public function testConfigOneValue()
+    {
+        $name  = "host";
+        $value = "test";
+        Record::config($name, $value);
+        $this->assertEquals($value, Record::config($name));
+    }
+
+    public function testFromUrl()
+    {
+        $url = "mysql://username:passord@some-host:3344/some-db";
+        Record::fromUrl($url);
+
+        $this->assertEquals("username", Record::config("user"));
+        $this->assertEquals("passord", Record::config("pass"));
+        $this->assertEquals("some-host", Record::config("host"));
+        $this->assertEquals("some-db", Record::config("db"));
     }
 
 }
