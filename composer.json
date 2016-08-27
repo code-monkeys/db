@@ -1,6 +1,6 @@
 {
-  "name": "m/record",
-  "version": "v0.3.0",
+  "name": "m/db",
+  "version": "v0.4.0",
   "require-dev": {
     "phpunit/phpunit": "*",
     "satooshi/php-coveralls": "^1.0"

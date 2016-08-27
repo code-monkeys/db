@@ -2,7 +2,7 @@
 namespace M;
 
 
-class RecordExtendTest extends \PHPUnit_Framework_TestCase
+class DbExtendTest extends \PHPUnit_Framework_TestCase
 {
 
     protected $object = null;
@@ -14,7 +14,7 @@ class RecordExtendTest extends \PHPUnit_Framework_TestCase
 
     public function testInstanceOf()
     {
-        $this->assertInstanceOf("M\Record", $this->object);
+        $this->assertInstanceOf("M\Db", $this->object);
     }
 
     public function testConfig()
@@ -27,7 +27,7 @@ class RecordExtendTest extends \PHPUnit_Framework_TestCase
 
 }
 
-class Dao extends Record
+class Dao extends Db
 {
 
     public function config($name = null, $value = null)

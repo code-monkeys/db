@@ -2,19 +2,19 @@
 namespace M;
 
 
-class RecordTest extends \PHPUnit_Framework_TestCase
+class DbTest extends \PHPUnit_Framework_TestCase
 {
 
     protected $object = null;
 
     public function setup()
     {
-        $this->object = new Record();
+        $this->object = new Db();
     }
 
     public function testInstanceOf()
     {
-        $this->assertInstanceOf("M\Record", $this->object);
+        $this->assertInstanceOf("M\Db", $this->object);
     }
 
     public function testConfigGetArray()
@@ -60,7 +60,7 @@ class RecordTest extends \PHPUnit_Framework_TestCase
     public function testFromUrl()
     {
         $url = "mysql://username:passord@some-host:3344/some-db";
-        $obj = Record::fromUrl($url);
+        $obj = Db::fromUrl($url);
 
         $this->assertEquals("username",   $obj->config("user"));
         $this->assertEquals("passord",    $obj->config("pass"));

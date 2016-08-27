@@ -2,7 +2,7 @@
 namespace M;
 
 
-interface RecordInterface
+interface DbInterface
 {
     public static function fromConfig(array $config);
     public static function fromUrl($url);

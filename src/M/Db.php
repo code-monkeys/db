@@ -2,7 +2,7 @@
 namespace M;
 
 
-class Record implements RecordInterface
+class Db implements DbInterface
 {
 
     protected $config = [

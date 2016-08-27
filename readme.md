@@ -1,7 +1,6 @@
-# Record
+# M/Db
 
 A small mysql library.
-
 
 
 ## Installation
@@ -14,26 +13,26 @@ composer require m/record
 ## Usage
 
 ```php
-use M\Record;
+use M\Db;
 
-$rec = Record::fromConfig([
+$db = Db::fromConfig([
     "host" => "db01.internal",
     "user" => "app",
     "pass" => "secret",
     "db"   => "shop",
 ]);
 
-$rows = $rec->read("SELECT * FROM cart WHERE user_id = 123");
+$rows = $db->read("SELECT * FROM cart WHERE user_id = 123");
 // returns array of associative arrays
 
-$num = $rec->write("UPDATE cart SET updated = NOW() WHERE id = 456");
+$num = $db->write("UPDATE cart SET updated = NOW() WHERE id = 456");
 // returns number of affected rows
 ```
 
 ## API
 
 ```php
-interface RecordInterface
+interface DbInterface
 {
     public static function fromConfig(array $config);
     public static function fromUrl($url);
@@ -47,18 +46,18 @@ interface RecordInterface
 The config can be parsed from a URL and changed at will:
 
 ```php
-$rec  = Record::fromUrl("mysql://username:password@host/db");
-$rec  = Record::fromUrl($_ENV["DATABASE_URL"]);
+$db = Db::fromUrl("mysql://username:password@host/db");
+$db = Db::fromUrl($_ENV["DATABASE_URL"]);
 
-$host = $rec->config("host");                   // get current config value
-$old  = $rec->config("host", "db02.internal");  // change one item, returns old value
-$all  = $rec->config();                         // get all config values
+$currHost = $db->config("host");                   // get current config value
+$oldValue = $db->config("host", "db02.internal");  // change one item, returns old value
+$config   = $db->config();                         // get all config values
 ```
 
 
 ## Status
 
-[![Travis Status](https://api.travis-ci.org/dotser/record.svg?branch=master)](https://travis-ci.org/dotser/record)
-[![Latest Stable Version](https://poser.pugx.org/m/record/v/stable)](https://packagist.org/packages/m/record)
-[![Total Downloads](https://poser.pugx.org/m/record/downloads)](https://packagist.org/packages/m/record)
-[![Coverage Status](https://coveralls.io/repos/github/dotser/record/badge.svg?branch=master)](https://coveralls.io/github/dotser/record?branch=master)
+[![Travis Status](https://api.travis-ci.org/dotser/db.svg?branch=master)](https://travis-ci.org/dotser/db)
+[![Latest Stable Version](https://poser.pugx.org/m/db/v/stable)](https://packagist.org/packages/m/db)
+[![Total Downloads](https://poser.pugx.org/m/db/downloads)](https://packagist.org/packages/m/db)
+[![Coverage Status](https://coveralls.io/repos/github/dotser/db/badge.svg?branch=master)](https://coveralls.io/github/dotser/db?branch=master)
