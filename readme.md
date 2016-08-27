@@ -47,6 +47,7 @@ The config can be parsed from a URL and changed at will:
 
 ```php
 Record::fromUrl("mysql://username:password@localhost/test");
+Record::fromUrl($_ENV["DATABASE_URL"]);
 $user   = Record::config("user");                   // get one item back
 $config = Record::config();                         // get all current config back
 $old    = Record::config("host", "db02.internal");  // change one item, returns old value
