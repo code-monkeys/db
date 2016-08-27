@@ -35,11 +35,12 @@ $num = $rec->write("UPDATE cart SET updated = NOW() WHERE id = 456");
 ```php
 interface RecordInterface
 {
-    public static function config($name = null, $value = null);
-    public static function fromUrl(string $url): void;
+    public static function fromConfig(array $config);
+    public static function fromUrl($url);
 
-    public function read(string $sql): array;
-    public function write(string $sql): int;
+    public function read($sql);
+    public function write($sql);
+    public function config($name = null, $value = null);
 }
 ```
 
