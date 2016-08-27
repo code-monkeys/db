@@ -7,7 +7,7 @@ A small mysql library.
 ### Installation
 
 ```
-compose require m/record
+composer require m/record
 ```
 
 
