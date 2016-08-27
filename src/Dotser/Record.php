@@ -26,7 +26,7 @@ class Record
         $this->db->select_db(self::$config["database"]);
     }
 
-    public function write($sql)
+    public function exec($sql)
     {
         $this->connect();
 
@@ -38,7 +38,7 @@ class Record
         return $res;
     }
 
-    public function read($sql, $key = null)
+    public function query($sql, $key = null)
     {
         $rows = [];
         $res  = $this->exec($sql);
