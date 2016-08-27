@@ -1,5 +1,5 @@
 <?php
-namespace Dotser;
+namespace M;
 
 
 interface RecordInterface

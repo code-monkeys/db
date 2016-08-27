@@ -7,9 +7,9 @@ A small mysql library.
 
 ```php
 <?php
-use Dotser\Record;
+use M\Record;
 
-// Define connection details
+// Configure the connection
 Record::config([
     "host" => "db01.internal",
     "user" => "web",

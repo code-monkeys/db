@@ -1,13 +1,13 @@
 {
-  "name": "dotser/record",
-  "version": "v0.2.2",
+  "name": "m/record",
+  "version": "v0.3.0",
   "require-dev": {
     "phpunit/phpunit": "*",
     "satooshi/php-coveralls": "^1.0"
   },
   "autoload": {
     "psr-0": {
-      "Dotser\\": "src/"
+      "M\\": "src/"
     }
   }
 }
