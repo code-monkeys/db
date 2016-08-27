@@ -52,7 +52,7 @@ class Dao extends Record
 
     public function save($id, array $data)
     {
-        // ...
+        // ... $sql = "WHATEVER"; ...
         parent::write($sql);
     }
 }
