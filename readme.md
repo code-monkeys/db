@@ -1,4 +1,4 @@
-# My Record
+# Record
 
 Tiny mysql library.
 
