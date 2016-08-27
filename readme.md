@@ -24,8 +24,11 @@ Record::config([
     "db"   => "shop",
 ]);
 
-$rows = Record::read("SELECT * FROM cart WHERE user_id = 123");         // returns array of associative arrays
-$num = Record::write("UPDATE cart SET updated = NOW() WHERE id = 456"); // returns number of affected rows
+$rows = Record::read("SELECT * FROM cart WHERE user_id = 123");
+// returns array of associative arrays
+
+$num = Record::write("UPDATE cart SET updated = NOW() WHERE id = 456");
+// returns number of affected rows
 ```
 
 
