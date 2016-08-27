@@ -7,6 +7,7 @@ class Record implements RecordInterface
 
     protected static $config = [
         "host" => "localhost",
+        "port" => 3306,
         "user" => "root",
         "pass" => "root",
         "db"   => "test",
@@ -83,9 +84,10 @@ class Record implements RecordInterface
         $this->mysql = new \mysqli(
             self::$config["host"],
             self::$config["user"],
-            self::$config["pass"]
+            self::$config["pass"],
+            self::$config["db"],
+            self::$config["port"]
         );
-        $this->mysql->select_db(self::$config["db"]);
     }
 
 }
