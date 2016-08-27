@@ -43,27 +43,6 @@ interface RecordInterface
 }
 ```
 
-
-Extend the class:
-
-```php
-class Dao extends Record
-{
-    protected function exec($sql)
-    {
-        // Now you can intercept the queries and so on
-        parent::exec($sql);
-    }
-
-    public function save($id, array $data)
-    {
-        // $sql = "INSERT ...";
-        parent::write($sql);
-    }
-}
-```
-
-
 The config can be parsed from a URL string and changed at will:
 
 ```php
