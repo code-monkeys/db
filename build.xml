@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="db/record" basedir="." default="php">
+<project name="m/db" basedir="." default="build">
 
-  <target name="php"
+  <target name="build"
     description="Runs default PHP tasks"
     depends="php:lint,php:test">
   </target>
