@@ -61,7 +61,7 @@ class Record implements RecordInterface
 
     protected function connect()
     {
-        if (!$this->mysql) {
+        if ($this->mysql) {
             return;
         }
 
