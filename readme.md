@@ -16,17 +16,17 @@ composer require m/record
 ```php
 use M\Record;
 
-Record::config([
+$rec = Record::fromConfig([
     "host" => "db01.internal",
     "user" => "app",
     "pass" => "secret",
     "db"   => "shop",
 ]);
 
-$rows = Record::read("SELECT * FROM cart WHERE user_id = 123");
+$rows = $rec->read("SELECT * FROM cart WHERE user_id = 123");
 // returns array of associative arrays
 
-$num = Record::write("UPDATE cart SET updated = NOW() WHERE id = 456");
+$num = $rec->write("UPDATE cart SET updated = NOW() WHERE id = 456");
 // returns number of affected rows
 ```
 
@@ -46,12 +46,12 @@ interface RecordInterface
 The config can be parsed from a URL and changed at will:
 
 ```php
-Record::fromUrl("mysql://username:password@localhost/test");
-Record::fromUrl($_ENV["DATABASE_URL"]);
+$rec = Record::fromUrl("mysql://username:password@localhost/test");
+$rec = Record::fromUrl($_ENV["DATABASE_URL"]);
 
-$user   = Record::config("user");                   // get one item back
-$config = Record::config();                         // get all current config back
-$old    = Record::config("host", "db02.internal");  // change one item, returns old value
+$user   = $rec->config("user");                   // get one item back
+$config = $rec->config();                         // get all current config back
+$old    = $rec->config("host", "db02.internal");  // change one item, returns old value
 ```
 
 
