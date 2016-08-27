@@ -50,9 +50,9 @@ The config can be parsed from a URL and changed at will:
 $rec  = Record::fromUrl("mysql://username:password@host/db");
 $rec  = Record::fromUrl($_ENV["DATABASE_URL"]);
 
-$user = $rec->config("user");                   // get one item back
-$all  = $rec->config();                         // get all current config back
+$host = $rec->config("host");                   // get current config value
 $old  = $rec->config("host", "db02.internal");  // change one item, returns old value
+$all  = $rec->config();                         // get all config values
 ```
 
 
