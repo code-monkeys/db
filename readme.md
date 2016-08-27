@@ -41,13 +41,11 @@ You can also extend the class:
 ```php
 class Dao extends Record
 {
-
     protected function exec($sql)
     {
         // Now you can log the queries and so on
         parent::exec($sql);
     }
-
 }
 ```
 
@@ -57,13 +55,11 @@ class Dao extends Record
 ```php
 interface RecordInterface
 {
-
     public static function config($name = null, $value = null);
     public static function fromUrl(string $url): void;
 
     public function read(string $sql): array;
     public function write(string $sql): int;
-
 }
 ```
 
