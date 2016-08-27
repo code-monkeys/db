@@ -1,7 +1,6 @@
 {
   "name": "dotser/record",
   "version": "0.1.0",
-  "minimum-stability": "dev",
   "require-dev": {
     "phpunit/phpunit": "*",
     "satooshi/php-coveralls": "^1.0"
