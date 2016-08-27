@@ -17,13 +17,11 @@ Record::config([
     "db"   => "shop",
 ]);
 
-// Reads data, returns array of associative arrays
-$res = Record::read("SELECT * FROM cart WHERE user_id = 123");
-print_r($res);
+// Reads data: returns array of associative arrays
+$rows = Record::read("SELECT * FROM cart WHERE user_id = 123");
 
-// Writes stuff, returns number of affected rows
+// Writes stuff: returns number of affected rows
 $num = Record::write("UPDATE cart SET updated = NOW() WHERE id = 456");
-print_r($num);
 ```
 
 The config can be parsed from a URL string and changed at will:
