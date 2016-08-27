@@ -9,5 +9,5 @@ interface RecordInterface
 
     public function read($sql);
     public function write($sql);
-    public function config($name = null, $value = null);
+    public function config($key = null, $value = null);
 }

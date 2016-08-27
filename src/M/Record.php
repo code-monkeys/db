@@ -32,23 +32,23 @@ class Record implements RecordInterface
         $this->config($config);
     }
 
-    public function config($name = null, $value = null)
+    public function config($key = null, $value = null)
     {
-        if ($name === null) {
+        if ($key === null) {
             return $this->config;
         }
 
-        if (is_array($name)) {
-            $this->config = array_merge($this->config, $name);
+        if (is_array($key)) {
+            $this->config = array_merge($this->config, $key);
             return;
         }
 
         if ($value === null) {
-            return isset($this->config[$name]) ? $this->config[$name] : $default;
+            return isset($this->config[$key]) ? $this->config[$key] : $default;
         }
 
-        $old = $this->config[$name];
-        $this->config[$name] = $value;
+        $old = $this->config[$key];
+        $this->config[$key] = $value;
 
         return $old;
     }
