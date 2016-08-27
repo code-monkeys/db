@@ -1,4 +1,4 @@
-# M/Record
+# Record
 
 A small mysql library.
 
