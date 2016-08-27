@@ -3,9 +3,9 @@
 Tiny mysql library.
 
 
-[![Travis Status](https://api.travis-ci.org/dotser/my-record.svg?branch=master)](https://travis-ci.org/dotser/library)
-[![Latest Stable Version](https://poser.pugx.org/dotser/my-record/v/stable)](https://packagist.org/packages/dotser/library)
-[![Total Downloads](https://poser.pugx.org/dotser/my-record/downloads)](https://packagist.org/packages/dotser/library)
+[![Travis Status](https://api.travis-ci.org/dotser/record.svg?branch=master)](https://travis-ci.org/dotser/record)
+[![Latest Stable Version](https://poser.pugx.org/dotser/record/v/stable)](https://packagist.org/packages/dotser/record)
+[![Total Downloads](https://poser.pugx.org/dotser/record/downloads)](https://packagist.org/packages/dotser/record)
 
 
 ### Ant tasks
