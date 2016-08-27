@@ -33,7 +33,7 @@ use Dotser\Record;
 
 Record::fromUrl("mysql://username:password@localhost/test");
 $user   = Record::config("user");           // get one item back
-$config = Record::config();                 // get current all config back
+$config = Record::config();                 // get all current config back
 Record::config("host", "db02.internal");    // change one item
 ```
 
