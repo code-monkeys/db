@@ -23,7 +23,7 @@ class Dao extends Record
 
     protected function exec($sql)
     {
-        // Log the queries
+        // Now you can log the queries
         parent::exec($sql);
     }
 
