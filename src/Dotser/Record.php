@@ -68,7 +68,7 @@ class Record implements RecordInterface
     public function write($sql)
     {
         $this->exec($sql);
-        return $this->affected_rows;
+        return $this->mysql->affected_rows;
     }
 
     protected function connect()
