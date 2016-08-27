@@ -1,17 +1,17 @@
-# Record
+# M/Record
 
 A small mysql library.
 
 
 
-### Installation
+## Installation
 
 ```
 composer require m/record
 ```
 
 
-### Usage
+## Usage
 
 ```php
 <?php
@@ -31,7 +31,7 @@ $num = Record::write("UPDATE cart SET updated = NOW() WHERE id = 456");
 // returns number of affected rows
 ```
 
-### API
+## API
 
 ```php
 interface RecordInterface
@@ -77,7 +77,7 @@ $old    = Record::config("host", "db02.internal");  // change one item, returns 
 ```
 
 
-### Status
+## Status
 
 [![Travis Status](https://api.travis-ci.org/dotser/record.svg?branch=master)](https://travis-ci.org/dotser/record)
 [![Latest Stable Version](https://poser.pugx.org/m/record/v/stable)](https://packagist.org/packages/m/record)
