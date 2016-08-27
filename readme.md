@@ -14,7 +14,6 @@ composer require m/record
 ## Usage
 
 ```php
-<?php
 use M\Record;
 
 Record::config([
@@ -68,8 +67,6 @@ class Dao extends Record
 The config can be parsed from a URL string and changed at will:
 
 ```php
-use Dotser\Record;
-
 Record::fromUrl("mysql://username:password@localhost/test");
 $user   = Record::config("user");                   // get one item back
 $config = Record::config();                         // get all current config back
