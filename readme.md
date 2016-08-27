@@ -9,18 +9,36 @@ Tiny mysql library.
 [![Coverage Status](https://coveralls.io/repos/github/dotser/record/badge.svg?branch=master)](https://coveralls.io/github/dotser/record?branch=master)
 
 
-### Ant tasks
+### Usage
 
+```php
+<?php
+use Dotser\Record;
+
+// Define connection details
+Record::config([
+    "host" => "db01.internal",
+    "user" => "web",
+    "pass" => "secret",
+    "db"   => "shop",
+]);
+
+// Use mysql object
+$rec  = new Record();
+$rows = $rec->query("SELECT * FROM cart WHERE user_id = 123");
+print_r($rows); // array of rows
+
+$ok = $rec->update("UPDATE cart SET updated = NOW() WHERE id = 456");
+print_r($ok); // boolean
 ```
-$ ant -p
-Buildfile: ./build.xml
 
-Main targets:
+The config can also come from a URL string:
 
- clean        Remove all build directories
- php          Runs default PHP tasks
- php:install  Install PHP dependencies.
- php:lint     Perform syntax check of sourcecode files.
- php:test     Run PHP tests.
- php:update   Updates PHP dependencies.
+```php
+use Dotser\Record;
+
+Record::fromUrl("mysql://username:password@localhost/test");
+$rec  = new Record();
+$rows = $rec->query("SELECT * FROM cart WHERE user_id = 123");
+print_r($rows); // array of rows
 ```
