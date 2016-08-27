@@ -17,29 +17,16 @@ Record::config([
     "db"   => "shop",
 ]);
 
-// Create/extend a record
-class Dao extends Record
-{
-
-    protected function exec($sql)
-    {
-        // Now you can log the queries
-        parent::exec($sql);
-    }
-
-}
-$cart = new Dao();
-
 // Reads data, returns array of associative arrays
-$res = $rec->read("SELECT * FROM cart WHERE user_id = 123");
+$res = Record::read("SELECT * FROM cart WHERE user_id = 123");
 print_r($res);
 
 // Writes stuff, returns number of affected rows
-$num = $rec->write("UPDATE cart SET updated = NOW() WHERE id = 456");
+$num = Record::write("UPDATE cart SET updated = NOW() WHERE id = 456");
 print_r($num);
 ```
 
-The config can also be parsed from a URL string:
+The config can be parsed from a URL string and changed at will:
 
 ```php
 use Dotser\Record;
@@ -49,6 +36,23 @@ $user   = Record::config("user");                       // get one item back
 $config = Record::config();                             // get all current config back
 $old    = Record::config("host", "db02.internal");      // change one item, returns old value
 ```
+
+
+You can also extend the class:
+
+```php
+class Dao extends Record
+{
+
+    protected function exec($sql)
+    {
+        // Now you can log the queries and so on
+        parent::exec($sql);
+    }
+
+}
+```
+
 
 ### API
 
