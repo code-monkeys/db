@@ -3,6 +3,7 @@
 A small mysql library.
 
 
+
 ### Usage
 
 ```php
@@ -24,6 +25,7 @@ $rows = Record::read("SELECT * FROM cart WHERE user_id = 123");
 $num = Record::write("UPDATE cart SET updated = NOW() WHERE id = 456");
 ```
 
+
 The config can be parsed from a URL string and changed at will:
 
 ```php
@@ -36,6 +38,7 @@ $old    = Record::config("host", "db02.internal");      // change one item, retu
 ```
 
 
+
 You can also extend the class:
 
 ```php
@@ -46,8 +49,15 @@ class Dao extends Record
         // Now you can log the queries and so on
         parent::exec($sql);
     }
+
+    public function save($id, array $data)
+    {
+        // ...
+        parent::write($sql);
+    }
 }
 ```
+
 
 
 ### API
