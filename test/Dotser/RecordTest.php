@@ -51,10 +51,10 @@ class RecordTest extends \PHPUnit_Framework_TestCase
         $url = "mysql://username:passord@some-host:3344/some-db";
         Record::fromUrl($url);
 
-        $this->assertEquals("username", Record::config("user"));
-        $this->assertEquals("passord", Record::config("pass"));
-        $this->assertEquals("some-host", Record::config("host"));
-        $this->assertEquals("some-db", Record::config("db"));
+        $this->assertEquals("username",   Record::config("user"));
+        $this->assertEquals("passord",    Record::config("pass"));
+        $this->assertEquals("some-host",  Record::config("host"));
+        $this->assertEquals("some-db",    Record::config("db"));
     }
 
 }

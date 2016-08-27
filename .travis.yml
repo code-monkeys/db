@@ -13,8 +13,6 @@ after_success:
 
 notifications:
   email:
-    on_start: always
-    on_success: always
     on_failure: always
     recipients:
       - ptdorf@gmail.com
