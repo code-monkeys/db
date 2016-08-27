@@ -31,18 +31,21 @@ $num = Record::write("UPDATE cart SET updated = NOW() WHERE id = 456");
 // returns number of affected rows
 ```
 
-The config can be parsed from a URL string and changed at will:
+### API
 
 ```php
-use Dotser\Record;
+interface RecordInterface
+{
+    public static function config($name = null, $value = null);
+    public static function fromUrl(string $url): void;
 
-Record::fromUrl("mysql://username:password@localhost/test");
-$user   = Record::config("user");                   // get one item back
-$config = Record::config();                         // get all current config back
-$old    = Record::config("host", "db02.internal");  // change one item, returns old value
+    public function read(string $sql): array;
+    public function write(string $sql): int;
+}
 ```
 
-You can extend the class:
+
+Extend the class:
 
 ```php
 class Dao extends Record
@@ -62,17 +65,15 @@ class Dao extends Record
 ```
 
 
-### API
+The config can be parsed from a URL string and changed at will:
 
 ```php
-interface RecordInterface
-{
-    public static function config($name = null, $value = null);
-    public static function fromUrl(string $url): void;
+use Dotser\Record;
 
-    public function read(string $sql): array;
-    public function write(string $sql): int;
-}
+Record::fromUrl("mysql://username:password@localhost/test");
+$user   = Record::config("user");                   // get one item back
+$config = Record::config();                         // get all current config back
+$old    = Record::config("host", "db02.internal");  // change one item, returns old value
 ```
 
 
