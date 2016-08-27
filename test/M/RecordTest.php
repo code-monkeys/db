@@ -19,14 +19,14 @@ class RecordTest extends \PHPUnit_Framework_TestCase
 
     public function testConfigGetArray()
     {
-        $return = Record::config();
+        $return = $this->object->config();
         $this->assertTrue(is_array($return));
         $this->assertTrue(isset($return["user"]));
     }
 
     public function testConfigGetOneValue()
     {
-        $return = Record::config("user");
+        $return = $this->object->config("user");
         $this->assertNotNull($return);
     }
 
@@ -34,27 +34,16 @@ class RecordTest extends \PHPUnit_Framework_TestCase
     {
         $name  = "user";
         $value = __FILE__;
-        Record::config([$name => $value]);
-        $this->assertEquals($value, Record::config($name));
+        $this->object->config([$name => $value]);
+        $this->assertEquals($value, $this->object->config($name));
     }
 
     public function testConfigOneValue()
     {
         $name  = "host";
         $value = "test";
-        Record::config($name, $value);
-        $this->assertEquals($value, Record::config($name));
-    }
-
-    public function testFromUrl()
-    {
-        $url = "mysql://username:passord@some-host:3344/some-db";
-        Record::fromUrl($url);
-
-        $this->assertEquals("username",   Record::config("user"));
-        $this->assertEquals("passord",    Record::config("pass"));
-        $this->assertEquals("some-host",  Record::config("host"));
-        $this->assertEquals("some-db",    Record::config("db"));
+        $this->object->config($name, $value);
+        $this->assertEquals($value, $this->object->config($name));
     }
 
     public function testConfigSetGetOldValue()
@@ -63,9 +52,20 @@ class RecordTest extends \PHPUnit_Framework_TestCase
         $old  = "old";
         $new  = "new";
 
-        $ignored  = Record::config($name, $old);
-        $returned = Record::config($name, $new);
+        $ignored  = $this->object->config($name, $old);
+        $returned = $this->object->config($name, $new);
         $this->assertEquals($old, $returned);
+    }
+
+    public function testFromUrl()
+    {
+        $url = "mysql://username:passord@some-host:3344/some-db";
+        $obj = Record::fromUrl($url);
+
+        $this->assertEquals("username",   $obj->config("user"));
+        $this->assertEquals("passord",    $obj->config("pass"));
+        $this->assertEquals("some-host",  $obj->config("host"));
+        $this->assertEquals("some-db",    $obj->config("db"));
     }
 
 }

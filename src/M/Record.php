@@ -5,7 +5,7 @@ namespace M;
 class Record implements RecordInterface
 {
 
-    protected static $config = [
+    protected $config = [
         "host" => "localhost",
         "port" => 3306,
         "user" => "root",
@@ -15,32 +15,42 @@ class Record implements RecordInterface
 
     protected $mysql = null;
 
-    public static function config($name = null, $value = null)
+    public static function fromConfig(array $config)
     {
-        if ($name === null) {
-            return self::$config;
-        }
-
-        if (is_array($name)) {
-            self::$config = array_merge(self::$config, $name);
-            return;
-        }
-
-        if ($value === null) {
-            return array_key_exists($name, self::$config) ? self::$config[$name] : $default;
-        }
-
-        $old = self::$config[$name];
-        self::$config[$name] = $value;
-
-        return $old;
+        return new self($config);
     }
 
     public static function fromUrl($url)
     {
         $config = parse_url($url);
         $config["db"] = trim($config["path"], "/");
-        self::config($config);
+        return self::fromConfig($config);
+    }
+
+    public function __construct(array $config = [])
+    {
+        $this->config($config);
+    }
+
+    public function config($name = null, $value = null)
+    {
+        if ($name === null) {
+            return $this->config;
+        }
+
+        if (is_array($name)) {
+            $this->config = array_merge($this->config, $name);
+            return;
+        }
+
+        if ($value === null) {
+            return isset($this->config[$name]) ? $this->config[$name] : $default;
+        }
+
+        $old = $this->config[$name];
+        $this->config[$name] = $value;
+
+        return $old;
     }
 
     public function read($sql)
@@ -71,11 +81,11 @@ class Record implements RecordInterface
         }
 
         $this->mysql = new \mysqli(
-            self::$config["host"],
-            self::$config["user"],
-            self::$config["pass"],
-            self::$config["db"],
-            self::$config["port"]
+            $this->config["host"],
+            $this->config["user"],
+            $this->config["pass"],
+            $this->config["db"],
+            $this->config["port"]
         );
     }
 

@@ -30,7 +30,7 @@ class RecordExtendTest extends \PHPUnit_Framework_TestCase
 class Dao extends Record
 {
 
-    public static function config($name = null, $value = null)
+    public function config($name = null, $value = null)
     {
         return __FILE__;
     }
