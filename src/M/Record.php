@@ -61,7 +61,7 @@ class Record implements RecordInterface
 
     public function insertId()
     {
-        return $this->mysql->last_insert_id;
+        return $this->mysql->last_insert_id();
     }
 
     protected function connect()
