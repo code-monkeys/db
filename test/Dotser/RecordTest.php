@@ -1,5 +1,5 @@
 <?php
-namespace Db;
+namespace Dotser;
 
 
 class RecordTest extends \PHPUnit_Framework_TestCase
@@ -14,7 +14,7 @@ class RecordTest extends \PHPUnit_Framework_TestCase
 
     public function testInstanceOf()
     {
-        $this->assertInstanceOf("Db\Record", $this->object);
+        $this->assertInstanceOf("Dotser\Record", $this->object);
     }
 
 }

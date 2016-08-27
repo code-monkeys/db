@@ -1,5 +1,5 @@
 <?php
-namespace Db;
+namespace Dotser;
 
 
 class Record
@@ -18,7 +18,7 @@ class Record
             return;
         }
 
-        $this->db = new mysqli(
+        $this->db = new \mysqli(
             self::$config["host"],
             self::$config["user"],
             self::$config["pass"]
