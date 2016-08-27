@@ -1,4 +1,4 @@
-# m/Db
+# m/db
 
 A small mysql library.
 
