@@ -18,7 +18,7 @@ use M\Record;
 
 Record::config([
     "host" => "db01.internal",
-    "user" => "web",
+    "user" => "app",
     "pass" => "secret",
     "db"   => "shop",
 ]);
