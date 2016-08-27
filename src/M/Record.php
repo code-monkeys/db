@@ -59,6 +59,11 @@ class Record implements RecordInterface
         return $this->mysql->affected_rows;
     }
 
+    public function insertId()
+    {
+        return $this->mysql->last_insert_id;
+    }
+
     protected function connect()
     {
         if ($this->mysql) {
