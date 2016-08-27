@@ -1,5 +1,5 @@
 <?php
-namespace M;
+namespace m;
 
 
 class Db implements DbInterface

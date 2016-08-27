@@ -1,4 +1,4 @@
-# M/Db
+# m/Db
 
 A small mysql library.
 
@@ -6,14 +6,14 @@ A small mysql library.
 ## Installation
 
 ```
-composer require m/record
+composer require m/db
 ```
 
 
 ## Usage
 
 ```php
-use M\Db;
+use m\Db;
 
 $db = Db::fromConfig([
     "host" => "db01.internal",

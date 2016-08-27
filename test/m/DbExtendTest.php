@@ -1,5 +1,5 @@
 <?php
-namespace M;
+namespace m;
 
 
 class DbExtendTest extends \PHPUnit_Framework_TestCase
@@ -14,7 +14,7 @@ class DbExtendTest extends \PHPUnit_Framework_TestCase
 
     public function testInstanceOf()
     {
-        $this->assertInstanceOf("M\Db", $this->object);
+        $this->assertInstanceOf("m\Db", $this->object);
     }
 
     public function testConfig()
