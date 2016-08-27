@@ -51,7 +51,7 @@ class Dao extends Record
 {
     protected function exec($sql)
     {
-        // Now you can log the queries and so on
+        // Now you can intercept the queries and so on
         parent::exec($sql);
     }
 
