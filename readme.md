@@ -17,7 +17,7 @@ Record::config([
     "db"   => "shop",
 ]);
 
-// Crreate an object
+// Create/extend an object
 $rec = new Record();
 
 // Reads data, returns array of associative arrays

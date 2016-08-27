@@ -29,7 +29,10 @@ class Record implements RecordInterface
             return array_key_exists($name, self::$config) ? self::$config[$name] : $default;
         }
 
+        $old = self::$config[$name];
         self::$config[$name] = $value;
+
+        return $old;
     }
 
     public static function fromUrl($url)

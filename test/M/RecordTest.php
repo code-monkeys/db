@@ -57,4 +57,15 @@ class RecordTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("some-db",    Record::config("db"));
     }
 
+    public function testConfigSetGetOldValue()
+    {
+        $name = "host";
+        $old  = "old";
+        $new  = "new";
+
+        $ignored  = Record::config($name, $old);
+        $returned = Record::config($name, $new);
+        $this->assertEquals($old, $returned);
+    }
+
 }
