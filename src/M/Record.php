@@ -17,7 +17,7 @@ class Record implements RecordInterface
 
     public static function fromConfig(array $config)
     {
-        return new self($config);
+        return new static($config);
     }
 
     public static function fromUrl($url)
