@@ -47,7 +47,7 @@ interface RecordInterface
 The config can be parsed from a URL and changed at will:
 
 ```php
-$rec  = Record::fromUrl("mysql://username:password@localhost/test");
+$rec  = Record::fromUrl("mysql://username:password@host/test");
 $rec  = Record::fromUrl($_ENV["DATABASE_URL"]);
 
 $user = $rec->config("user");                   // get one item back
