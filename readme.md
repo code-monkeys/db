@@ -19,10 +19,10 @@ Record::config([
 
 // Use mysql object
 $rec  = new Record();
-$rows = $rec->query("SELECT * FROM cart WHERE user_id = 123");
+$rows = $rec->read("SELECT * FROM cart WHERE user_id = 123");
 print_r($rows);     // array of arrays
 
-$num = $rec->update("UPDATE cart SET updated = NOW() WHERE id = 456");
+$num = $rec->write("UPDATE cart SET updated = NOW() WHERE id = 456");
 print_r($num);      // number of affected rows
 ```
 
