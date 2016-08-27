@@ -17,8 +17,18 @@ Record::config([
     "db"   => "shop",
 ]);
 
-// Create/extend an object
-$rec = new Record();
+// Create/extend a record
+class Dao extends Record
+{
+
+    protected function exec($sql)
+    {
+        // Log the queries
+        parent::exec($sql);
+    }
+
+}
+$cart = new Dao();
 
 // Reads data, returns array of associative arrays
 $res = $rec->read("SELECT * FROM cart WHERE user_id = 123");

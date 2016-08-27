@@ -43,22 +43,6 @@ class Record implements RecordInterface
         self::config($config);
     }
 
-    protected function exec($sql)
-    {
-        $this->connect();
-
-        $res = $this->mysql->query($sql);
-        if ($res === false) {
-            throw new \RuntimeException(sprintf(
-                "%s from query <%s>.",
-                $this->mysql->error,
-                $sql
-            ));
-        }
-
-        return $res;
-    }
-
     public function read($sql)
     {
         $rows = [];
@@ -88,6 +72,22 @@ class Record implements RecordInterface
             self::$config["db"],
             self::$config["port"]
         );
+    }
+
+    protected function exec($sql)
+    {
+        $this->connect();
+
+        $res = $this->mysql->query($sql);
+        if ($res === false) {
+            throw new \RuntimeException(sprintf(
+                "%s from query <%s>.",
+                $this->mysql->error,
+                $sql
+            ));
+        }
+
+        return $res;
     }
 
 }
