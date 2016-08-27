@@ -4,12 +4,41 @@ namespace Dotser;
 
 class Record
 {
-    protected static $config = null;
+
+    public static $config = [
+        "host" => "localhost",
+        "user" => "root",
+        "pass" => "root",
+        "db"   => "test",
+    ];
+
     protected $db = null;
 
-    public static function configure(array $config)
+    public static function config($name = null, $value = null, $default = null)
     {
-        self::$config = $config;
+        if ($name === null) {
+            return self::$config;
+        }
+
+        if (is_array($name)) {
+            self::$config += $name;
+            return;
+        }
+
+        if ($value === null) {
+            echo '<pre>'; var_dump($name); echo '</pre>' . PHP_EOL;
+            return array_key_exists($name, self::$config) ? self::$config[$name] : $default;
+        }
+
+        self::$config[$name] = $value;
+    }
+
+    public static function fromUrl($url)
+    {
+        $config = parse_url($url);
+        $config["db"] = trim($config["path"], "/");
+
+        self::configure($config);
     }
 
     protected function connect()
@@ -23,7 +52,7 @@ class Record
             self::$config["user"],
             self::$config["pass"]
         );
-        $this->db->select_db(self::$config["database"]);
+        $this->db->select_db(self::$config["db"]);
     }
 
     public function exec($sql)
