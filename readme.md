@@ -17,7 +17,6 @@ compose require m/record
 <?php
 use M\Record;
 
-// Configure the connection
 Record::config([
     "host" => "db01.internal",
     "user" => "web",
@@ -25,11 +24,8 @@ Record::config([
     "db"   => "shop",
 ]);
 
-// Reads data: returns array of associative arrays
-$rows = Record::read("SELECT * FROM cart WHERE user_id = 123");
-
-// Writes stuff: returns number of affected rows
-$num = Record::write("UPDATE cart SET updated = NOW() WHERE id = 456");
+$rows = Record::read("SELECT * FROM cart WHERE user_id = 123");         // returns array of associative arrays
+$num = Record::write("UPDATE cart SET updated = NOW() WHERE id = 456"); // returns number of affected rows
 ```
 
 
