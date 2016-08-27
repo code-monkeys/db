@@ -14,7 +14,7 @@ class Record implements RecordInterface
 
     protected $mysql = null;
 
-    public static function config($name = null, $value = null, $default = null)
+    public static function config($name = null, $value = null)
     {
         if ($name === null) {
             return self::$config;

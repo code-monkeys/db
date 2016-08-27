@@ -32,15 +32,15 @@ $ok = $rec->update("UPDATE cart SET updated = NOW() WHERE id = 456");
 print_r($ok); // boolean
 ```
 
-The config can also come from a URL string:
+The config can also be parsed from a URL string:
 
 ```php
 use Dotser\Record;
 
 Record::fromUrl("mysql://username:password@localhost/test");
-$rec  = new Record();
-$rows = $rec->query("SELECT * FROM cart WHERE user_id = 123");
-print_r($rows); // array of rows
+$user   = Record::config("user");           // get one item back
+$config = Record::config();                 // get current all config back
+Record::config("host", "db02.internal");    // change one item
 ```
 
 ### API
@@ -49,7 +49,7 @@ print_r($rows); // array of rows
 class RecordInterface
 {
 
-    public static function config($name = null, $value = null, $default = null);
+    public static function config($name = null, $value = null);
     public static function fromUrl(string $url): void;
 
     public function read(string $sql): array;
