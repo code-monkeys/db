@@ -65,6 +65,7 @@ class DbTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("username",   $obj->config("user"));
         $this->assertEquals("passord",    $obj->config("pass"));
         $this->assertEquals("some-host",  $obj->config("host"));
+        $this->assertEquals(3344,         $obj->config("port"));
         $this->assertEquals("some-db",    $obj->config("db"));
     }
 
