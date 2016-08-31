@@ -1,5 +1,5 @@
 <?php
-namespace M;
+namespace m;
 
 
 interface DbInterface
