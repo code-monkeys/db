@@ -13,9 +13,8 @@ composer require m/db
 ## Usage
 
 ```php
-use m\Db;
 
-$db = Db::fromConfig([
+$db = \m\Db::fromConfig([
     "host" => "db01.internal",
     "user" => "app",
     "pass" => "secret",
